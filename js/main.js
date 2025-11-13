@@ -1,4 +1,4 @@
-console.log("Try On Makeup ready! 💄");
+console.log("Try On Makeup ready!");
 
 // Tombol kamera
 const video = document.getElementById("video");
