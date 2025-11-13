@@ -1,0 +1,11 @@
+# Abaikan virtual environment dan file sementara
+venv/
+__pycache__/
+*.pyc
+
+# Abaikan dataset besar
+backend/datasets/CelebAMaskHQ/
+
+# Abaikan file sementara VS Code
+.vscode/
+*.log
