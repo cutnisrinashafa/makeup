@@ -1,0 +1,450 @@
+/* =======================
+   GLOBAL STYLE (Tema Hijau Elegan)
+======================= */
+
+:root {
+  --mint: #7ec8a1;
+  --mint-light: #a3ddc0;
+  --mint-bg: #e9f7f1;
+  --text-dark: #2f4f3f;
+  --muted: #6b8578;
+  --card: #f7fdf9;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--mint-bg);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+}
+
+/* =======================
+   NAVIGATION BAR
+======================= */
+
+header {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 18px 32px;
+  margin: 24px auto;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--mint), var(--mint-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(126, 200, 161, 0.15);
+  color: var(--text-dark);
+}
+
+.nav-btn.active {
+  background: linear-gradient(90deg, var(--mint), var(--mint-light));
+  color: white;
+}
+
+/* =======================
+   BUTTONS
+======================= */
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--mint), var(--mint-light));
+  border: none;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(126, 200, 161, 0.4);
+  color: var(--text-dark);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =======================
+   CONTENT AREA
+======================= */
+
+section {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin: 0 auto 24px;
+  max-width: 1000px;
+}
+
+.viewer {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f2faf6;
+}
+
+video,
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.color-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.products {
+  margin-top: 18px;
+  padding: 12px;
+}
+
+.carousel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.card {
+  width: 180px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.product-name {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+/* Gambar Halal Green Beauty */
+.wardah-philosophy {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.wardah-philosophy img {
+  max-width: 700px;
+  width: 90%;
+  height: auto;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* --- FOOTER STYLE --- */
+.footer {
+  background-color: #6fc3c0;
+  color: white;
+  padding: 3rem 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.footer-section p, 
+.footer-section a, 
+.footer-section li {
+  font-size: 0.9rem;
+  color: #e9f9f8;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.newsletter {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.newsletter input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  flex: 1;
+}
+
+.newsletter button {
+  background-color: #006d77;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background-color: #005f68;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #003d40;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1rem;
+  font-size: 0.85rem;
+}
+
+/* --- SLIDESHOW --- */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* efek fade */
+.fade {
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+@keyframes fade {
+  from {opacity: 0.4;}
+  to {opacity: 1;}
+}
+
+/* titik indikator */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  background-color: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  cursor: pointer;
+}
+
+.active-dot {
+  background-color: white;
+}
+
+/* posisi konten di atas slide */
+.hero-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  max-width: 700px;
+  z-index: 2;
+}
+
+.hero-banner .headline {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-banner p {
+  font-size: 1.1rem;
+}
+
+/* === HERO SECTION === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* semula 100vh, sekarang lebih kecil */
+  overflow: hidden;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 80vh; /* sesuaikan tinggi gambar agar tidak terlalu besar */
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Turunkan teks Temukan Makeup Impianmu ke bawah */
+.hero-banner {
+  position: absolute;
+  bottom: 8%; /* sebelumnya mungkin top:50%; ubah jadi bottom agar di bawah */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1.2rem 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 700px;
+}
+
+/* Styling tambahan agar tampak rapi */
+.hero-banner .headline {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.hero-banner p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.6rem;
+  background-color: #00bfa6;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #009f8a;
+}
+
+

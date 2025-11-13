@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Make up | Wardah</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    main {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fafafa;
+    }
+
+    h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #5a6e63;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .category {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #444;
+      min-height: 42px;
+    }
+
+    .view-more {
+      display: inline-block;
+      margin-top: 10px;
+      color: #5bc8a3;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .view-more:hover {
+      color: #39987a;
+    }
+
+    @media (max-width: 600px) {
+      .product-card img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div>Wardah</div>
+        <div>
+          <h1>Try On Makeup</h1>
+          <div style="font-size:0.85rem;color:var(--muted)">Temukan makeup impianmu</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="tryon.html" class="nav-btn">Try-On</a>
+        <a href="products.html" class="nav-btn active">Products</a>
+      </nav>
+    </header>
+
+    <main>
+      <h3>Products Makeup</h3>
+
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="images/eyeshadow1.png" alt="Sapuan warna intens untuk menunjolkan keindahan mata">
+          <div class="category">Eyeshadow</div>
+          <div class="name">EyeXpert</div>
+          <a href="#" class="view-more">View More</a>
+        </div>
+
+        <div class="product-card">
+          <img src="images/eyeshadow2.png" alt="Palet mata quatro dengan perpaduan warna matte & shimmer">
+          <div class="category">Eyeshadow</div>
+          <div class="name">Colorfit Quad Eye Palette Brunette Dawn</div>
+          <a href="#" class="view-more">View More</a>
+        </div>
+
+        <div class="product-card">
+          <img src="images/blushon1.png" alt="Cream Blush dengan tekstur krim hingga bedak. Diperkaya Vitamin E.">
+          <div class="category">Blush On</div>
+          <div class="name">Wardah Cream Blush Colorfit</div>
+          <a href="#" class="view-more">View More</a>
+        </div>
+
+        <div class="product-card">
+          <img src="images/blushon2.png" alt="Cocok digunakan untuk berbagai warna kulit wanita indonesia,">
+          <div class="category">Blush On</div>
+          <div class="name">Wardah Exclusive Blush On</div>
+          <a href="#" class="view-more">View More</a>
+        </div>
+      </div>
+    </main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section about">
+      <h4>ABOUT WARDAH</h4>
+      <p>Wardah is a beauty brand that cares and understands the wish of every woman to always feel calm and comfortable with their look.</p>
+    </div>
+
+    <div class="footer-section contact">
+      <h4>LAYANAN PENGADUAN KONSUMEN</h4>
+      <p>Kementerian Perdagangan Direktorat Jenderal Perlindungan Konsumen dan Tertib Niaga</p>
+      <p>Whatsapp : 0853-1111-1010</p>
+      <p>Telepon : 021 - 34419308</p>
+      <p>Email : pengaduan.konsumen@kemendag.go.id</p>
+    </div>
+
+    <div class="footer-section help">
+      <h4>HELP</h4>
+      <ul>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Delivery</a></li>
+        <li><a href="#">Returns & Exchanges</a></li>
+        <li><a href="#">Payments</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section quick-links">
+      <h4>QUICK LINKS</h4>
+      <ul>
+        <li><a href="#">Halal Green Beauty</a></li>
+        <li><a href="#">Make Up Expert</a></li>
+        <li><a href="#">Inspiring Movement</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Location</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section subscribe">
+      <h4>SUBSCRIBE NEWSLETTER</h4>
+      <form class="newsletter">
+        <input type="email" placeholder="Ketikan alamat email kamu" required>
+        <button type="submit">KIRIM</button>
+      </form>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <small>© 2025 Wardah. All rights reserved.</small>
+    <div>
+      <a href="#">PRIVACY POLICY</a> |
+      <a href="#">TERMS & CONDITIONS</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </div>
+</body>
+</html>

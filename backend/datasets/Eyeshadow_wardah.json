@@ -1,0 +1,46 @@
+{
+    "eyeshadow_palette": [
+    { 
+        "name": "Cocoa Brown", 
+        "hex": "#8B5A45", 
+        "rgb": [139, 90, 69],
+        "opacity": 1.0
+    },
+    { 
+        "name": "Rose Mauve", 
+        "hex": "#8C5E5E", 
+        "rgb": [140, 94, 94],
+        "opacity": 1.0
+    },
+    { 
+        "name": "Olive Taupe", 
+        "hex": "#7A7B68", 
+        "rgb": [122, 123, 104],
+        "opacity": 1.0
+    },
+    { 
+        "name": "Dusty Pink", 
+        "hex": "#9F7E83", 
+        "rgb": [159, 126, 131],
+        "opacity": 1.0
+    },
+    { 
+        "name": "Steel Blue", 
+        "hex": "#90A1A5", 
+        "rgb": [144, 161, 165],
+        "opacity": 1.0
+    },
+    { 
+        "name": "Mocha Taupe", 
+        "hex": "#927D69", 
+        "rgb": [146, 125, 105],
+        "opacity": 1.0
+    },
+    { 
+        "name": "Soft Nude", 
+        "hex": "#A78578", 
+        "rgb": [167, 133, 120],
+        "opacity": 1.0
+    }
+    ]
+}

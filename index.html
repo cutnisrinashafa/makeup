@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Try On Makeup — Wardah Green Edition</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div>Wardah</div>
+        <div>
+          <h1>Try On Makeup</h1>
+          <div style="font-size:0.85rem;color:var(--muted)">Temukan Makeup Impianmu</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html" class="nav-btn active">Home</a>
+        <a href="tryon.html" class="nav-btn">Try-On</a>
+        <a href="products.html" class="nav-btn">Products</a>
+      </nav>
+    </header>
+
+    <main>
+ <section  section class="hero" id="home">
+  <div class="slideshow-container">
+    <div class="slide fade">
+      <img src="images/slide1.png" alt="Wardah Product 1">
+    </div>
+    <div class="slide fade">
+      <img src="images/slide2.png" alt="Wardah Product 2">
+    </div>
+
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+  </div>
+
+  <!-- pindahkan hero-banner ke luar slideshow-container -->
+</section>
+
+<!-- SEKARANG hero-banner di luar section gambar -->
+<section class="hero-banner">
+  <p class="kicker">Fresh · Natural · Elegant</p>
+  <h2 class="headline">Temukan Makeup Impianmu</h2>
+  <p>Website Try On Makeup ini membantu perempuan di luar sana untuk menemukan style makeup yang cocok dengan kepribadian masing-masing. 
+     Coba lihat pilihan makeup yang paling sesuai untukmu!</p>
+
+  <div class="cta">
+    <a href="tryon.html" class="btn-primary">Coba makeup mu di sini</a>
+  </div>
+</section>
+
+
+
+          <div class="wardah-philosophy">
+            <img src="images/halalgreenbeauty.png" alt="Halal Green Beauty Wardah">
+        </div>
+
+
+        <div class="products">
+          <h3>Rekomendasi Produk</h3>
+          <div class="carousel" id="brandCarousel"></div>
+        </div>
+      </section>
+    </main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section about">
+      <h4>ABOUT WARDAH</h4>
+      <p>Wardah is a beauty brand that cares and understands the wish of every woman to always feel calm and comfortable with their look.</p>
+    </div>
+
+    <div class="footer-section contact">
+      <h4>LAYANAN PENGADUAN KONSUMEN</h4>
+      <p>Politeknik Negeri Lhokseumawe</p>
+      <p>Whatsapp : 0822-1117-9960</p>
+    </div>
+
+    <div class="footer-section quick-links">
+      <h4>QUICK LINKS</h4>
+      <ul>
+        <li><a href="#">Halal Green Beauty</a></li>
+        <li><a href="#">Make Up Expert</a></li>
+        <li><a href="#">Inspiring Movement</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Location</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section subscribe">
+      <h4>SUBSCRIBE NEWSLETTER</h4>
+      <form class="newsletter">
+        <input type="email" placeholder="Ketikan alamat email kamu" required>
+        <button type="submit">KIRIM</button>
+      </form>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <small>© 2025 Wardah. All rights reserved.</small>
+    <div>
+      <a href="#">PRIVACY POLICY</a> |
+      <a href="#">TERMS & CONDITIONS</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>

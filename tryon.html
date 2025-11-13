@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Try-On Makeup (Real-Time)</title>
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- MediaPipe -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom right, #d9f3ea, #f5fffc);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #5fc2a5;
+      color: white;
+    }
+
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header .logo {
+      background-color: white;
+      color: #5fc2a5;
+      font-weight: bold;
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      margin-left: 15px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #4ca78e;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .panel {
+      max-width: 850px;
+      width: 100%;
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .viewer {
+      position: relative;
+      width: 640px;
+      height: 480px;
+      margin: 0 auto 15px;
+      background: #f8f9f8;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    video, canvas {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      left: 0;
+      top: 0;
+      transform: none;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .nav-btn {
+      background: #5fc2a5;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: #4aa78d;
+    }
+
+    .color-groups {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .color-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .color-group p {
+      margin: 0;
+      font-weight: 600;
+      color: #4aa78d;
+    }
+
+    .color-options {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .color-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #fff;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .color-dot:hover {
+      transform: scale(1.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div>Wardah</div>
+        <div>
+          <h1 style="margin:0;font-size:1.2rem;">Try On Makeup</h1>
+          <div style="font-size:0.85rem;">Temukan makeup impianmu</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="tryon.html" class="active">Try-On</a>
+        <a href="products.html">Products</a>
+      </nav>
+    </header>
+
+    <main>
+      <aside class="panel">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <strong>Try-On (Real-time)</strong>
+          <small style="color:#888;">Gunakan webcam & browser modern</small>
+        </div>
+
+        <div class="viewer">
+          <video id="video" autoplay muted playsinline></video>
+          <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="controls">
+          <button class="nav-btn" id="toggleCamera">Start Camera</button>
+          <button class="nav-btn" id="saveSnapshot">Save Snapshot</button>
+        </div>
+
+        <div class="color-groups">
+          <div class="color-group" id="lipColors">
+            <p>Lipmatte</p>
+            <div class="color-options"></div>
+          </div>
+
+          <div class="color-group" id="eyeColors">
+            <p>Eyeshadow</p>
+            <div class="color-options"></div>
+          </div>
+
+          <div class="color-group" id="blushColors">
+            <p>Blush On</p>
+            <div class="color-options"></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <small>Try-On Make Up by Hometown</small>
+    </footer>
+  </div>
+
+  <script>
+  const video = document.getElementById('video');
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  let faceMesh, camera, isCameraOn = false;
+  let currentColors = { lipstick: null, eyeshadow: null, blush: null };
+  let faceRegions = {};
+
+  // 🎨 Load data
+  async function loadMakeupData() {
+    try {
+      const [colorsRes, regionsRes] = await Promise.all([
+        fetch("http://127.0.0.1:5000/api/all_products"),
+        fetch("http://127.0.0.1:5000/api/face_regions")
+      ]);
+      const data = await colorsRes.json();
+      faceRegions = await regionsRes.json();
+
+      ['lipColors','eyeColors','blushColors'].forEach(id => {
+        document.getElementById(id).querySelector('.color-options').innerHTML = '';
+      });
+
+      data.lipmatte.forEach(item => addColorDot('lipColors', 'lipstick', item.shade_code, item.shade_name));
+      if (data.eyeshadow && data.eyeshadow.eyeshadow_palette)
+        data.eyeshadow.eyeshadow_palette.forEach(item => addColorDot('eyeColors', 'eyeshadow', item.hex, item.name));
+      data.blushon.forEach(item => addColorDot('blushColors', 'blush', item.hex_color, item.shade_name));
+
+      document.querySelectorAll('.color-dot').forEach(dot => {
+        dot.addEventListener('click', () => {
+          const type = dot.dataset.type;
+          const color = dot.dataset.color;
+          currentColors[type] = color;
+        });
+      });
+    } catch (err) {
+      console.error("❌ Gagal memuat dataset:", err);
+    }
+  }
+
+  function addColorDot(parentId, type, color, label) {
+    const container = document.getElementById(parentId).querySelector('.color-options');
+    const dot = document.createElement('div');
+    dot.classList.add('color-dot');
+    dot.style.background = color || '#ccc';
+    dot.dataset.type = type;
+    dot.dataset.color = color || '#ccc';
+    dot.title = label;
+    container.appendChild(dot);
+  }
+
+  // 🤖 MediaPipe
+  faceMesh = new FaceMesh({
+    locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`
+  });
+  faceMesh.setOptions({
+    maxNumFaces: 1,
+    refineLandmarks: true,
+    minDetectionConfidence: 0.5,
+    minTrackingConfidence: 0.5,
+  });
+  faceMesh.onResults(onResults);
+
+  function onResults(results) {
+    ctx.save();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
+    ctx.drawImage(results.image, 0, 0, canvas.width, canvas.height);
+    ctx.restore();
+
+    if (!results.multiFaceLandmarks[0]) return;
+    const landmarks = results.multiFaceLandmarks[0];
+
+    if (currentColors.lipstick && faceRegions.lip)
+      drawArea(landmarks, faceRegions.lip, currentColors.lipstick, 0.6);
+
+    if (currentColors.eyeshadow && faceRegions.eyeshadow)
+      drawArea(landmarks, faceRegions.eyeshadow, currentColors.eyeshadow, 0.3);
+
+    // 🌸 blush dinamis
+    if (currentColors.blush)
+      drawBlushDynamic(landmarks, currentColors.blush);
+  }
+
+  function drawArea(landmarks, indices, color, opacity) {
+    if (!indices || indices.length === 0) return;
+    ctx.save();
+    ctx.globalAlpha = opacity;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    const first = landmarks[indices[0]];
+    ctx.moveTo(canvas.width - first.x * canvas.width, first.y * canvas.height);
+    indices.slice(1).forEach(i => {
+      const p = landmarks[i];
+      ctx.lineTo(canvas.width - p.x * canvas.width, p.y * canvas.height);
+    });
+    ctx.closePath();
+    ctx.filter = 'blur(3px)';
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // 🌸 Fungsi blush otomatis
+  function drawBlushDynamic(landmarks, color) {
+    ctx.save();
+    ctx.globalAlpha = 0.25;
+    ctx.fillStyle = color;
+
+    const leftCheek = {
+      x: (landmarks[234].x + landmarks[93].x) / 2,
+      y: (landmarks[234].y + landmarks[93].y) / 2
+    };
+    const rightCheek = {
+      x: (landmarks[454].x + landmarks[323].x) / 2,
+      y: (landmarks[454].y + landmarks[323].y) / 2
+    };
+
+    const faceWidth = Math.abs(landmarks[234].x - landmarks[454].x);
+    const radius = faceWidth * canvas.width * 0.12;
+
+    ctx.beginPath();
+    ctx.filter = 'blur(12px)';
+    ctx.arc(canvas.width - leftCheek.x * canvas.width, leftCheek.y * canvas.height, radius, 0, 2 * Math.PI);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(canvas.width - rightCheek.x * canvas.width, rightCheek.y * canvas.height, radius, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // 📸 Kamera
+  document.getElementById('toggleCamera').addEventListener('click', async () => {
+    if (!isCameraOn) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+        video.srcObject = stream;
+        video.addEventListener('loadedmetadata', () => {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+        });
+        camera = new Camera(video, {
+          onFrame: async () => await faceMesh.send({ image: video }),
+          width: 640,
+          height: 480
+        });
+        camera.start();
+        isCameraOn = true;
+        document.getElementById('toggleCamera').textContent = "Stop Camera";
+      } catch (err) {
+        alert("Tidak dapat mengakses kamera. Pastikan izin diberikan dan tidak digunakan aplikasi lain.");
+      }
+    } else {
+      if (camera) camera.stop();
+      video.srcObject = null;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      isCameraOn = false;
+      document.getElementById('toggleCamera').textContent = "Start Camera";
+    }
+  });
+
+  document.getElementById('saveSnapshot').addEventListener('click', () => {
+    const img = canvas.toDataURL('image/png');
+    const a = document.createElement('a');
+    a.href = img;
+    a.download = `makeup_snapshot_${Date.now()}.png`;
+    a.click();
+  });
+
+  loadMakeupData();
+  </script>
+</body>
+</html>
